@@ -1,0 +1,38 @@
+{
+  "name": "template-xcpc",
+  "version": "1.0.0",
+  "private": true,
+  "description": "XCPC algorithm templates with an automatically generated VitePress site and PDF handbook",
+  "homepage": "https://anglebeatrowcolum.github.io/Template/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AngleBeatrowcolum/Template.git"
+  },
+  "license": "UNLICENSED",
+  "type": "module",
+  "packageManager": "pnpm@11.22.0",
+  "scripts": {
+    "generate": "node scripts/generate-site.mjs",
+    "predev": "pnpm generate",
+    "dev": "vitepress dev",
+    "prebuild": "pnpm generate",
+    "build": "vitepress build",
+    "preview": "vitepress preview",
+    "setup:fonts": "node scripts/setup-fonts.mjs",
+    "export:pdf": "node scripts/prebuild-pdfs.mjs",
+    "prebuild:pdf": "pnpm generate && node scripts/prebuild-pdfs.mjs",
+    "release": "pnpm prebuild:pdf && vitepress build",
+    "typecheck": "vue-tsc --noEmit -p .vitepress/tsconfig.json",
+    "precheck": "pnpm generate",
+    "check": "node --test scripts/tests/*.test.mjs && pnpm typecheck && pnpm build"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "markdown-it": "^14.1.0",
+    "markdown-it-mathjax3": "^4.3.2",
+    "typescript": "~5.9.2",
+    "vitepress": "^1.6.4",
+    "vue": "^3.5.21",
+    "vue-tsc": "~3.0.6"
+  }
+}
